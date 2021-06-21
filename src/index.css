@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --heading-font-family: "Fira Sans", sans-serif;
+    --body-font-family: "Fira Sans", sans-serif;
+    --base-font-size: 16px;
+
+    --brightest-color-code: 245, 245, 245;
+    --darkest-color-code: 6, 22, 36;
+    --brightest-color: rgb(var(--brightest-color-code));
+    --darkest-color: rgb(var(--darkest-color-code));
+
+    --black-color: #000000;
+    --white-color: #ffffff;
+
+    --background-color: var(--brightest-color);
+    --contrast-color-code: var(--darkest-color-code);
+    --contrast-color: var(--darkest-color);
+
+    --primary-color: #0093fd;
+    --secondary-color: #00d67c;
+    --accent-color: #8627ff;
+
+    --danger-color: #ef253d;
+    --warning-color: #ff9900;
+    --success-color: #2ac839;
+
+    --primary-gradient: linear-gradient(
+        to right,
+        var(--secondary-color),
+        var(--primary-color)
+    );
+    --secondary-gradient: linear-gradient(
+        to right,
+        var(--primary-color),
+        var(--accent-color)
+    );
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+button, button:focus {
+    outline: none;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font-family);
+    font-size: var(--base-font-size);
+    color: var(--contrast-color);
+    background-color: var(--background-color);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/***********************
+ * COLOR THEME SETTINGS
+ ***********************/
+
+body.dark-theme {
+    --background-color: var(--darkest-color);
+    --contrast-color: var(--brightest-color);
+    --contrast-color-code: var(--brightest-color-code);
+}
+
+body.light-theme {
+    --background-color: var(--brightest-color);
+    --contrast-color: var(--darkest-color);
+    --contrast-color-code: var(--darkest-color-code);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --background-color: var(--darkest-color);
+        --contrast-color: var(--brightest-color);
+        --contrast-color-code: var(--brightest-color-code);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        --background-color: var(--brightest-color);
+        --contrast-color: var(--darkest-color);
+        --contrast-color-code: var(--darkest-color-code);
+    }
+}

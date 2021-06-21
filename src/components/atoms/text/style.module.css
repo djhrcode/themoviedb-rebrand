@@ -1,0 +1,31 @@
+.text {
+    --text-font-size: 1rem;
+    --text-font-weight: inherit;
+    
+    font-size: var(--text-font-size, 1rem);
+    font-weight: var(--text-font-weight, inherit);
+}
+
+.text.text--bold {
+    --text-font-weight: 600;
+}
+
+.text.text--xl {
+    --text-font-size: 1.25rem;
+}
+
+.text.text--lg {
+    --text-font-size: 1.125rem;
+}
+
+.text.text--base {
+    --text-font-size: 1rem;
+}
+
+.text.text--sm {
+    --text-font-size: 0.875rem;
+}
+
+.text.text--xs {
+    --text-font-size: 0.75rem;
+}

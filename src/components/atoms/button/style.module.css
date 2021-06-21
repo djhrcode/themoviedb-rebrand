@@ -1,0 +1,100 @@
+.button {
+    --button-width: max-content;
+    --button-height: 3rem;
+    --button-background: var(--primary-color, #0f0f0f);
+
+    --button-inset-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    --button-outer-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    --button-padding: 0 2.5rem;
+    --button-radius: 99999px;
+
+    --button-font-color: #ffffff;
+    --button-font-size: 1.125rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: none;
+    height: var(--button-height);
+    width: var(--button-width);
+    min-width: max-content;
+    background: var(--button-background);
+    box-shadow: inset var(--button-inset-shadow), var(--button-outer-shadow);
+
+    color: var(--button-font-color);
+    font-weight: 500;
+    font-family: var(--button-font-family, inherit);
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
+    text-decoration: none;
+
+    transition: all 150ms ease-out;
+}
+
+.button:hover {
+    --button-inset-shadow: 0px 0px 8rem 30px
+        rgba(var(--contrast-color-code), 20%);
+}
+
+.button:focus {
+    --button-inset-shadow: 0px 0px 8rem 8rem
+        rgba(var(--darkest-color-code), 60%);
+}
+
+.button .button__content {
+    display: initial;
+}
+
+.button--full {
+    --button-width: 100%;
+}
+
+.button--cta {
+    --button-background: var(--primary-gradient);
+    --button-font-color: var(--color-white);
+}
+
+.button--cta.button--secondary {
+    --button-background: var(--secondary-gradient);
+}
+
+.button--outline {
+    --button-background: transparent;
+    --button-font-color: var(--contrast-color);
+
+    border: 1px solid var(--contrast-color);
+}
+
+.button.button--ghost {
+    --button-background: rgba(var(--contrast-color-code), 10%);
+    --button-font-color: var(--contrast-color);
+}
+
+.button.button--xl {
+    --button-height: 4rem;
+    --button-padding: 0 4.5rem;
+    --button-font-size: 1.375rem;
+}
+
+.button.button--lg {
+    --button-height: 3.5rem;
+    --button-padding: 0 3.5rem;
+    --button-font-size: 1.25rem;
+}
+
+.button.button--sm {
+    --button-height: 2.5rem;
+    --button-padding: 0 1.75rem;
+    --button-font-size: 1rem;
+}
+
+.button.button--xs {
+    --button-height: 1.75rem;
+    --button-padding: 0 1.25rem;
+    --button-font-size: 0.875rem;
+}

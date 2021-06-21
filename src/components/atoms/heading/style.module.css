@@ -1,0 +1,33 @@
+.heading {
+    font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight, 600);
+    /* margin: 0 0 var(--heading-margin-bottom, 1.75rem) 0; */
+}
+
+.heading.heading--h1 {
+    --heading-font-size: 4.75rem;
+}
+
+.heading.heading--h2 {
+    --heading-font-size: 3.75rem;
+}
+
+.heading.heading--h3 {
+    --heading-font-size: 3rem;
+    --heading-margin-bottom: 1.5rem;
+}
+
+.heading.heading--h4 {
+    --heading-font-size: 2.25rem;
+    --heading-margin-bottom: 1.5rem;
+}
+
+.heading.heading--h5 {
+    --heading-font-size: 1.875rem;
+    --heading-margin-bottom: 1.25rem;
+}
+
+.heading.heading--h6 {
+    --heading-font-size: 1.5rem;
+    --heading-margin-bottom: 1.25rem;
+}

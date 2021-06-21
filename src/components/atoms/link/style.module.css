@@ -1,0 +1,30 @@
+.link {
+    --link-font-color: var(--primary-color);
+    --link-font-size: inherit;
+    --link-opacity: 1;
+    --link-font-weight: 600;
+
+    background: none;
+    text-decoration: none;
+    opacity: var(--link-opacity, 1);
+    font-size: var(--link-font-size);
+    font-weight: var(--link-font-weight, 600);
+    color: var(--link-font-color);
+    text-shadow: var(--link-text-shadow, 0 0 0 transparent);
+    transition: all 150ms ease-out;
+}
+
+.link:hover {
+    --link-opacity: 0.5;
+}
+
+.link.link--navigation {
+    --link-font-weight: 400;
+    --link-font-color: var(--contrast-color);
+}
+
+.link.link--navigation.link--active {
+    --link-font-weight: 600;
+    --link-font-color: #00c3ff;
+    --link-text-shadow: 0px 4px 20px var(--primary-color); 
+}
