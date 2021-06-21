@@ -17,6 +17,7 @@
     --black-color: #000000;
     --white-color: #ffffff;
 
+    --background-color-code: var(--brightest-color-code);
     --background-color: var(--brightest-color);
     --contrast-color-code: var(--darkest-color-code);
     --contrast-color: var(--darkest-color);
@@ -39,6 +40,8 @@
         var(--primary-color),
         var(--accent-color)
     );
+
+    --background-gradient-code: var(--background-color) 10%, rgba(var(--background-color-code), 0.7) 80%, rgba(var(--background-color-code), 0); 
 }
 
 html {
@@ -71,29 +74,37 @@ body {
  ***********************/
 
 body.dark-theme {
+    --background-color-code: var(--darkest-color-code);
     --background-color: var(--darkest-color);
     --contrast-color: var(--brightest-color);
     --contrast-color-code: var(--brightest-color-code);
+    --background-gradient-code: var(--background-color) 10%, rgba(var(--background-color-code), 0.7) 80%, rgba(var(--background-color-code), 0); 
 }
 
 body.light-theme {
+    --background-color-code: var(--brightest-color-code);
     --background-color: var(--brightest-color);
     --contrast-color: var(--darkest-color);
     --contrast-color-code: var(--darkest-color-code);
+    --background-gradient-code: var(--background-color) 10%, rgba(var(--background-color-code), 0.7) 80%, rgba(var(--background-color-code), 0); 
 }
 
 @media (prefers-color-scheme: dark) {
     body {
+        --background-color-code: var(--darkest-color-code);
         --background-color: var(--darkest-color);
         --contrast-color: var(--brightest-color);
         --contrast-color-code: var(--brightest-color-code);
+        --background-gradient-code: var(--background-color) 10%, rgba(var(--background-color-code), 0.7) 80%, rgba(var(--background-color-code), 0); 
     }
 }
 
 @media (prefers-color-scheme: light) {
     body {
+        --background-color-code: var(--brightest-color-code);
         --background-color: var(--brightest-color);
         --contrast-color: var(--darkest-color);
         --contrast-color-code: var(--darkest-color-code);
+        --background-gradient-code: var(--background-color) 10%, rgba(var(--background-color-code), 0.7) 80%, rgba(var(--background-color-code), 0); 
     }
 }

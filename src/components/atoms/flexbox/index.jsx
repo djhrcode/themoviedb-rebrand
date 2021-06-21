@@ -44,6 +44,7 @@ export default function Flexbox({
     directionReverse = false,
     children,
     className,
+    ...rest
 }) {
     const directionModifier = `${direction}${
         directionReverse ? "-reverse" : ""
@@ -62,6 +63,7 @@ export default function Flexbox({
                 className
             )}
             children={children}
+            {...rest}
         />
     );
 }

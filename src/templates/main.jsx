@@ -8,9 +8,7 @@ export default function MainTemplate({ children }) {
     return (
         <div className="application">
             <NavigationBar></NavigationBar>
-            <Flexbox.Column.AlignStretch className="container mx-auto">
-                {children}
-            </Flexbox.Column.AlignStretch>
+            {children}
         </div>
     );
 }

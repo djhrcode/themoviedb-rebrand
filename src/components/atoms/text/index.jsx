@@ -72,5 +72,4 @@ Text.propTypes = {
     size: PropTypes.oneOf(Object.values(PossibleSizes)),
     element: PropTypes.oneOf(Object.values(PossibleElements)),
     weight: PropTypes.oneOf(Object.values(PossibleWeights)),
-    to: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
 };

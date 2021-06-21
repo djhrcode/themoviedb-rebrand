@@ -25,6 +25,7 @@ const HeadingSizes = {
 export default function Heading({
     element = HeadingElements.H1,
     size,
+    className,
     children,
 }) {
     size = size || element;
@@ -33,29 +34,39 @@ export default function Heading({
 
     return (
         <Element
-            className={classNames(style.heading, style[`heading--${size}`])}
+            className={classNames(
+                style.heading,
+                style[`heading--${size}`],
+                className
+            )}
             children={children}
         />
     );
 }
 
-Heading.H1 = decorateComponentProps(Heading, { element: HeadingElements.H1 })
-Heading.H2 = decorateComponentProps(Heading, { element: HeadingElements.H2 })
-Heading.H3 = decorateComponentProps(Heading, { element: HeadingElements.H3 })
-Heading.H4 = decorateComponentProps(Heading, { element: HeadingElements.H4 })
-Heading.H5 = decorateComponentProps(Heading, { element: HeadingElements.H5 })
-Heading.H6 = decorateComponentProps(Heading, { element: HeadingElements.H6 })
-Heading.SuperLarge = decorateComponentProps(Heading, { size: HeadingSizes.SuperLarge })
-Heading.ExtraLarge = decorateComponentProps(Heading, { size: HeadingSizes.ExtraLarge })
-Heading.Large = decorateComponentProps(Heading, { size: HeadingSizes.Large })
-Heading.Medium = decorateComponentProps(Heading, { size: HeadingSizes.Medium })
-Heading.Small = decorateComponentProps(Heading, { size: HeadingSizes.Small })
-Heading.ExtraSmall = decorateComponentProps(Heading, { size: HeadingSizes.ExtraSmall })
+Heading.H1 = decorateComponentProps(Heading, { element: HeadingElements.H1 });
+Heading.H2 = decorateComponentProps(Heading, { element: HeadingElements.H2 });
+Heading.H3 = decorateComponentProps(Heading, { element: HeadingElements.H3 });
+Heading.H4 = decorateComponentProps(Heading, { element: HeadingElements.H4 });
+Heading.H5 = decorateComponentProps(Heading, { element: HeadingElements.H5 });
+Heading.H6 = decorateComponentProps(Heading, { element: HeadingElements.H6 });
+Heading.SuperLarge = decorateComponentProps(Heading, {
+    size: HeadingSizes.SuperLarge,
+});
+Heading.ExtraLarge = decorateComponentProps(Heading, {
+    size: HeadingSizes.ExtraLarge,
+});
+Heading.Large = decorateComponentProps(Heading, { size: HeadingSizes.Large });
+Heading.Medium = decorateComponentProps(Heading, { size: HeadingSizes.Medium });
+Heading.Small = decorateComponentProps(Heading, { size: HeadingSizes.Small });
+Heading.ExtraSmall = decorateComponentProps(Heading, {
+    size: HeadingSizes.ExtraSmall,
+});
 
 Heading.Sizes = HeadingSizes;
 Heading.Elements = HeadingElements;
 
 Heading.propTypes = {
-    element: PropTypes.oneOf(Object.values(HeadingElements)).isRequired,
+    element: PropTypes.oneOf(Object.values(HeadingElements)),
     size: PropTypes.oneOf(Object.values(HeadingSizes)),
 };

@@ -23,8 +23,6 @@ export const decorateComponentProps = (Component, baseProps) => {
             if (target[prop] && target[prop].isPropDecorator) {
                 const DecoratorProxied = target[prop];
 
-                console.log(target, prop, DecoratorProxied);
-
                 const PropDecorator = (proxyProps) => {
                     return (
                         <DecoratorProxied
