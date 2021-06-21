@@ -1,5 +1,5 @@
 .hero {
-    min-height: calc(90vh + 5rem);
+    min-height: 100vh;
     height: 100%;
     position: relative;
 }
@@ -13,13 +13,23 @@
     background-position: center;
     background-size: cover;
     background-image: var(--hero-bg-image);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero__backdrop:before {
     content: "";
     display: flex;
     position: absolute;
-    background: linear-gradient(to right, var(--background-gradient-code));
+    background: linear-gradient(
+        to right,
+        var(--background-color) 0%,
+        rgba(var(--background-color-code), 0.6),
+        rgba(var(--background-color-code), 0)
+    );
     width: 50%;
     height: 100%;
     left: 0;
@@ -29,7 +39,11 @@
     content: "";
     display: flex;
     position: absolute;
-    background: linear-gradient(to top, var(--background-color), rgba(var(--background-color-code), 0));
+    background: linear-gradient(
+        to top,
+        var(--background-color),
+        rgba(var(--background-color-code), 0)
+    );
     width: 100%;
     height: 20%;
     bottom: 0;

@@ -150,7 +150,7 @@ export const createResource = (resourceFactory) => {
 
 /****************************************************
  * 
- * Example of how to use createResource hook
+ * Example of how to use createResource function
  * using the serializer with dependency injection
 
 const User = createResource((data, serializer) => ({
