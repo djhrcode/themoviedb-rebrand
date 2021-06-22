@@ -1,0 +1,29 @@
+.card {
+    --card-background-color: rgba(var(--brightest-color-code), 0.02);
+    --card-rounded: 1.25rem;
+    --card-padding: 1.25rem;
+
+    --card-max-width: none;
+    --card-min-width: none;
+    --card-width: auto;
+
+    --card-max-height: none;
+    --card-min-height: none;
+    --card-height: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+    padding: var(--card-padding);
+    background-color: var(--card-background-color);
+    border-radius: var(--card-rounded);
+
+    max-width: var(--card-max-width);
+    min-width: var(--card-min-width);
+    width: var(--card-width);
+
+    max-height: var(--card-max-height);
+    min-height: var(--card-min-height);
+    height: var(--card-height);
+}

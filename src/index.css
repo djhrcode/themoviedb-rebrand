@@ -10,7 +10,7 @@
     --base-font-size: 16px;
 
     --brightest-color-code: 245, 245, 245;
-    --darkest-color-code: 6, 22, 36;
+    --darkest-color-code: 7, 7, 7;
     --brightest-color: rgb(var(--brightest-color-code));
     --darkest-color: rgb(var(--darkest-color-code));
 

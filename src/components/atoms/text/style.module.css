@@ -1,9 +1,18 @@
 .text {
     --text-font-size: 1rem;
     --text-font-weight: inherit;
+    --text-line-clamp: 2;
     
     font-size: var(--text-font-size, 1rem);
     font-weight: var(--text-font-weight, inherit);
+}
+
+.text.text--ellipsis {
+    display: -webkit-box;
+    overflow: hidden;
+
+    -webkit-line-clamp: var(--text-line-clamp);
+    -webkit-box-orient: vertical;  
 }
 
 .text.text--bold {

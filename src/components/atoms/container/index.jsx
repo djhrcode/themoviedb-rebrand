@@ -2,7 +2,6 @@ import classNames from "classnames";
 import React from "react";
 import styles from "./style.module.css";
 import { decorateComponentProps } from "../../../infrastructure/jsx/props";
-import Flexbox from "../flexbox";
 
 export default function Container({
     isFluid = false,
@@ -11,18 +10,18 @@ export default function Container({
     ...rest
 }) {
     return (
-        <Flexbox.Column.Full
+        <div
             className={classNames(
                 {
                     [styles["container--fluid"]]: isFluid,
+                    [styles.container]: true,
                 },
-                styles.container,
                 className
             )}
             {...rest}
         >
             {children}
-        </Flexbox.Column.Full>
+        </div>
     );
 }
 

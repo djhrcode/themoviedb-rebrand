@@ -44,19 +44,14 @@ const createHttpResource = (httpClient, pathName) => {
     const { put, post, ...otherMethodsAndProperties } = resourceClient;
 
     const httpInstance = {
-        setSuffix(suffix) {
-            return resourceClient.setSuffix(suffix) && httpInstance;
-        },
-        setQuery(query) {
-            return resourceClient.setQuery(query) && httpInstance;
-        },
-        setData(data) {
-            return resourceClient.setData(data) && httpInstance;
-        },
+        setSuffix: (suffix) => resourceClient.setSuffix(suffix) && httpInstance,
 
-        setHeader(header, value) {
-            return resourceClient.setHeader(header, value) && httpInstance;
-        },
+        setQuery: (query) => resourceClient.setQuery(query) && httpInstance,
+
+        setData: (data) => resourceClient.setData(data) && httpInstance,
+
+        setHeader: (header, value) =>
+            resourceClient.setHeader(header, value) && httpInstance,
 
         base: () => createHttpClient.fromClient(resourceClient),
 

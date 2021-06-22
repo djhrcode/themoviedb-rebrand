@@ -27,6 +27,7 @@ export default function Text({
     size = PossibleSizes.Normal,
     element = PossibleElements.Paragraph,
     weight = PossibleWeights.Regular,
+    maxLines,
     className,
     ...rest
 }) {
@@ -38,8 +39,12 @@ export default function Text({
                 styles.text,
                 styles[`text--${weight}`],
                 styles[`text--${size}`],
+                { [styles[`text--ellipsis`]]: !!maxLines },
                 className
             )}
+            style={{
+                "--text-line-clamp": maxLines,
+            }}
             {...rest}
         />
     );
@@ -69,6 +74,7 @@ Text.Regular = decorateComponentProps(Text, {
 Text.propTypes = {
     isExternal: PropTypes.bool,
     inNewTab: PropTypes.bool,
+    maxLines: PropTypes.number,
     size: PropTypes.oneOf(Object.values(PossibleSizes)),
     element: PropTypes.oneOf(Object.values(PossibleElements)),
     weight: PropTypes.oneOf(Object.values(PossibleWeights)),

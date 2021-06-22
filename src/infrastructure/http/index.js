@@ -7,13 +7,22 @@ import prefix from "superagent-prefix";
  * @param {string|null} baseUrl
  * @returns
  */
-const createHttpClient = (baseUrl = null, config = null) => {
-    const globalConfig = config ?? {
-        baseUrl: baseUrl,
-        headers: {},
-        data: {},
-        suffix: "",
-        query: {},
+const createHttpClient = (
+    baseUrl = null,
+    {
+        baseUrl: configBaseUrl = null,
+        headers: configHeaders = {},
+        data: configData = {},
+        suffix: configSuffix = "",
+        query: configQuery = {},
+    } = {}
+) => {
+    const globalConfig = {
+        baseUrl: baseUrl || configBaseUrl,
+        headers: configHeaders || {},
+        data: configData || {},
+        suffix: configSuffix || "",
+        query: configQuery || {},
     };
 
     /**
@@ -131,7 +140,7 @@ const createHttpClient = (baseUrl = null, config = null) => {
              * @returns {RequestInterface}
              */
             setQuery: (query) => {
-                applyQuery(requestInstance, query)
+                applyQuery(requestInstance, query);
                 return requestContract;
             },
 

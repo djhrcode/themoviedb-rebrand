@@ -1,14 +1,41 @@
-import React from "react";
-import Hero from "../components/organisms/hero";
-import Flexbox from "../components/atoms/flexbox";
-import Container from "../components/atoms/container";
+import React, { useEffect, useState } from "react";
+import Container from "@/components/atoms/container";
+import HeroComponent from "@/components/organisms/hero";
+import MovieService from "@/application/movies";
+import Movie from "@/domain/movies/movie";
+import PosterCardComponent from "@/components/molecules/cards/poster";
 
 export default function HomePage() {
+    const [mostPopular, setMostPopular] = useState(Movie());
+
+    const fetchMostPopular = async () => {
+        const mostPopular = await MovieService().getMostPopular();
+
+        console.log("Most Popular Movie:", mostPopular);
+        setMostPopular(mostPopular);
+    };
+
+    useEffect(() => {
+        if (mostPopular.isEmpty) fetchMostPopular();
+
+        console.log("Backdrop image", mostPopular.backdropImage);
+    });
+
     return (
         <>
-            <Hero></Hero>
-            <Container>
-            </Container>
+            <HeroComponent
+                headingText={mostPopular.title}
+                descriptionText={mostPopular.description}
+                backdropImage={mostPopular.backdropImage}
+                buttonText={"See movie info"}
+            ></HeroComponent>
+            <PosterCardComponent
+                title={mostPopular.title}
+                year={mostPopular.year}
+                image={mostPopular.posterImage}
+                releaseDate={mostPopular.releaseDate}
+            ></PosterCardComponent>
+            <Container></Container>
         </>
     );
 }

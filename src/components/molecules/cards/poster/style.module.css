@@ -1,0 +1,9 @@
+.poster-card {
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+}
+
+.poster-card__image {
+    border-radius: 0.75rem;
+}

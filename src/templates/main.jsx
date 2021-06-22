@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Flexbox from "../components/atoms/flexbox";
-import NavigationBar from "../components/organisms/navigation-bar";
+import NavigationComponent from "@/components/organisms/navigation";
 
 export default function MainTemplate({ children }) {
     const [value, setValue] = useState(0);
@@ -9,7 +8,7 @@ export default function MainTemplate({ children }) {
 
     return (
         <div className="application">
-            <NavigationBar></NavigationBar>
+            <NavigationComponent></NavigationComponent>
             {children}
         </div>
     );

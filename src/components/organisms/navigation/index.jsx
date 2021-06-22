@@ -1,13 +1,13 @@
 import React from "react";
-import Flexbox from "../../atoms/flexbox";
 import classNames from "classnames";
+import TMDBLogo from "@/tmdb-logo.png";
+import Button from "@/components/atoms/button";
+import Link from "@/components/atoms/link";
+import Flexbox from "@/components/atoms/flexbox";
+import NavLink from "@/components/molecules/nav-link";
 import styles from "./style.module.css";
-import Button from "../../atoms/button";
-import TMDBLogo from "../../../tmdb-logo.png";
-import NavLink from "../../molecules/nav-link";
-import Link from "../../atoms/link";
 
-export default function NavigationBar({ children, className, ...rest }) {
+export default function NavigationComponent({ children, className, ...rest }) {
     return (
         <Flexbox.JustifySpaceBetween
             className={classNames(styles.navigation, className)}

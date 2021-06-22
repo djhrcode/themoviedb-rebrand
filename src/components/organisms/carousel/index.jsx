@@ -9,37 +9,9 @@ import Heading from "@/components/atoms/heading";
 import Text from "@/components/atoms/text";
 import Container from "@/components/atoms/container";
 
-const ButtonComponent = ({ children }) =>
-    children ? (
-        <Button.ExtraLarge
-            className={classNames(styles["hero__button"], "mb-6")}
-            children={children}
-        />
-    ) : null;
-
-const TextComponent = ({ children }) =>
-    children ? (
-        <Text.ExtraLarge
-            maxLines={2}
-            className={classNames(styles["hero__text"], "mb-10")}
-            children={children}
-        />
-    ) : null;
-
-const HeadingComponent = ({ children }) =>
-    children ? (
-        <Heading.H1.ExtraLarge
-            className={classNames(styles["hero__heading"], "mb-4")}
-            children={children}
-        />
-    ) : null;
-
-const HeroStructure = ({
-    heading,
-    text,
-    button,
-    backdrop,
-    className,
+const CarouselComponent = ({
+    title,
+    options = ["movies", "tv shows"], 
     ...rest
 }) => (
     <Flexbox.Column.Full className={styles.hero} {...rest}>
@@ -52,7 +24,6 @@ const HeroStructure = ({
                 </Flexbox.Column.AlignStart>
             </Grid>
         </Container.Fluid>
-        {backdrop}
     </Flexbox.Column.Full>
 );
 
