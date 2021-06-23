@@ -11,7 +11,7 @@ export default function MovieService() {
                 .get(path)
                 .setQuery({ page })
                 .fetch();
-            return createPaginationJson(response.body, MovieResource);
+            return createPaginationJson(response.body, MovieResource).results;
         };
 
     const getUpcoming = createMoviesRequest("/upcoming");
@@ -20,7 +20,7 @@ export default function MovieService() {
     const getNowPlaying = createMoviesRequest("/now_playing");
 
     const getMostPopular = async () => {
-        const { results: popularMovies } = await getPopular();
+        const popularMovies = await getPopular();
 
         /**
          * @param {typeof popularMovies[i]} mostPopular
