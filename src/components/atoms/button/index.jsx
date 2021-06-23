@@ -28,6 +28,7 @@ const ButtonTypes = {
 const ButtonColors = {
     Primary: "primary",
     Secondary: "secondary",
+    Accent: "accent"
 };
 
 const isLinkButton = ({ to }) => !!to;
@@ -87,4 +88,7 @@ Button.Primary = decorateComponentProps(Button, {
 });
 Button.Secondary = decorateComponentProps(Button, {
     color: Button.Colors.Secondary,
+});
+Button.Accent = decorateComponentProps(Button, {
+    color: Button.Colors.Accent,
 });

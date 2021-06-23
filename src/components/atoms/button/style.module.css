@@ -5,7 +5,7 @@
 
     --button-inset-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     --button-outer-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-    --button-padding: 0 2.5rem;
+    --button-padding: 0 2rem;
     --button-radius: 99999px;
 
     --button-font-color: #ffffff;
@@ -63,6 +63,10 @@
     --button-background: var(--secondary-gradient);
 }
 
+.button--cta.button--accent {
+    --button-background: linear-gradient(to right, #FD0000, #FF9900);
+}
+
 .button--outline {
     --button-background: transparent;
     --button-font-color: var(--contrast-color);
@@ -77,24 +81,24 @@
 
 .button.button--xl {
     --button-height: 4rem;
-    --button-padding: 0 4.5rem;
+    --button-padding: 0 3.5rem;
     --button-font-size: 1.375rem;
 }
 
 .button.button--lg {
     --button-height: 3.5rem;
-    --button-padding: 0 3.5rem;
+    --button-padding: 0 2.75rem;
     --button-font-size: 1.25rem;
 }
 
 .button.button--sm {
     --button-height: 2.5rem;
-    --button-padding: 0 1.75rem;
+    --button-padding: 0 1.5rem;
     --button-font-size: 1rem;
 }
 
 .button.button--xs {
-    --button-height: 1.75rem;
+    --button-height: 1.5rem;
     --button-padding: 0 1.25rem;
     --button-font-size: 0.875rem;
 }
