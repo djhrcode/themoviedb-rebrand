@@ -1,7 +1,18 @@
 .heading {
+    --heading-line-clamp: 2;
+
     font-size: var(--heading-font-size);
     font-weight: var(--heading-font-weight, 600);
     /* margin: 0 0 var(--heading-margin-bottom, 1.75rem) 0; */
+}
+
+
+.heading.heading--ellipsis {
+    display: -webkit-box;
+    overflow: hidden;
+
+    -webkit-line-clamp: var(--heading-line-clamp);
+    -webkit-box-orient: vertical;  
 }
 
 .heading.heading--h1 {

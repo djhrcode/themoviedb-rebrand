@@ -25,6 +25,7 @@ const HeadingSizes = {
 export default function Heading({
     element = HeadingElements.H1,
     size,
+    maxLines,
     className,
     children,
 }) {
@@ -35,10 +36,16 @@ export default function Heading({
     return (
         <Element
             className={classNames(
-                style.heading,
-                style[`heading--${size}`],
+                {
+                    [style.heading]: true,
+                    [style[`heading--${size}`]]: true,
+                    [style[`text--ellipsis`]]: !!maxLines,
+                },
                 className
             )}
+            style={{
+                "--heading-line-clamp": maxLines,
+            }}
             children={children}
         />
     );
@@ -67,6 +74,7 @@ Heading.Sizes = HeadingSizes;
 Heading.Elements = HeadingElements;
 
 Heading.propTypes = {
+    maxLines: PropTypes.number,
     element: PropTypes.oneOf(Object.values(HeadingElements)),
     size: PropTypes.oneOf(Object.values(HeadingSizes)),
 };
