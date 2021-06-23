@@ -1,0 +1,21 @@
+.icon {
+    --icon-font-size: 1rem;
+    --icon-margin-left: none;
+    --icon-margin-right: none;
+    
+    font-size: var(--icon-font-size);
+    margin-left: var(--icon-margin-left);
+    margin-right: var(--icon-margin-right);
+}
+
+.icon.icon--inherit {
+    --icon-font-size: inherit;
+}
+
+.icon.icon--left {
+    --icon-margin-left: 1em;
+}
+
+.icon.icon--right {
+    --icon-margin-right: 1em;
+}
