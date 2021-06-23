@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { AppRouter } from "./infrastructure/router";
+import "@/index.css";
+import "@mdi/font/css/materialdesignicons.css"
 
 ReactDOM.render(
     <React.StrictMode>
