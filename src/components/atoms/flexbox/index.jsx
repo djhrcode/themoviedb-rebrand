@@ -34,18 +34,34 @@ const PossibleWraps = {
     Wrap: "wrap",
 };
 
+/**
+ * @typedef {DefaultProps} DefaultPropsType
+ */
+const DefaultProps = {
+    justify: PossibleJustifications.Center,
+    align: PossibleAlignments.Center,
+    direction: PossibleDirections.Row,
+    wrap: PossibleWraps.Wrap,
+    basis: PossibleBasis.Auto,
+    wrapReverse: false,
+    directionReverse: false,
+};
+
+/**
+ * @param {DefaultPropsType & React.HTMLAttributes} param0
+ */
 export default function Flexbox({
-    justify = PossibleJustifications.Center,
-    align = PossibleAlignments.Center,
-    direction = PossibleDirections.Row,
-    wrap = PossibleWraps.Wrap,
-    basis = PossibleBasis.Auto,
-    wrapReverse = false,
-    directionReverse = false,
+    justify = DefaultProps.justify,
+    align = DefaultProps.align,
+    direction = DefaultProps.direction,
+    wrap = DefaultProps.wrap,
+    basis = DefaultProps.basis,
+    wrapReverse = DefaultProps.wrapReverse,
+    directionReverse = DefaultProps.directionReverse,
     children,
     className,
     ...rest
-}) {
+} = DefaultProps) {
     const directionModifier = `${direction}${
         directionReverse ? "-reverse" : ""
     }`;
