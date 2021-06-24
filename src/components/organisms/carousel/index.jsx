@@ -8,66 +8,50 @@ import Button from "@/components/atoms/button";
 import Heading from "@/components/atoms/heading";
 import Text from "@/components/atoms/text";
 import Container from "@/components/atoms/container";
+import PosterCardComponent from "@/components/molecules/cards/poster";
+import Tabs from "@/components/molecules/tabs";
 
-const CarouselComponent = ({
+export default function CarouselComponent({
     title,
-    options = ["movies", "tv shows"], 
+    items = [],
+    className,
     ...rest
-}) => (
-    <Flexbox.Column.Full className={styles.hero} {...rest}>
-        <Container.Fluid>
-            <Grid cols={1} md={2} className={styles["hero__grid"]}>
-                <Flexbox.Column.AlignStart className={styles["hero__content"]}>
-                    {heading}
-                    {text}
-                    {button}
-                </Flexbox.Column.AlignStart>
-            </Grid>
-        </Container.Fluid>
-    </Flexbox.Column.Full>
-);
-
-export default function HeroComponent({
-    headingText,
-    descriptionText,
-    buttonText,
-    backdropImage,
-    headingComponent,
-    textComponent,
-    buttonComponent,
 }) {
-    const heroStyles = {
-        "--hero-bg-image": `url(${backdropImage})`,
-    };
-
-    const HeadingArea = () =>
-        headingComponent ?? <HeadingComponent>{headingText}</HeadingComponent>;
-
-    const TextArea = () =>
-        textComponent ?? <TextComponent>{descriptionText}</TextComponent>;
-
-    const ButtonArea = () =>
-        buttonComponent ?? <ButtonComponent>{buttonText}</ButtonComponent>;
-
-    const BackdropArea = () =>
-        backdropImage ? (
-            <Flexbox.AlignStretch
-                className={styles["hero__backdrop"]}
-            ></Flexbox.AlignStretch>
-        ) : null;
-
     return (
-        <HeroStructure
-            style={heroStyles}
-            heading={<HeadingArea></HeadingArea>}
-            text={<TextArea></TextArea>}
-            button={<ButtonArea></ButtonArea>}
-            backdrop={<BackdropArea></BackdropArea>}
-        ></HeroStructure>
+        <Flexbox.Column.Full className={classNames(className)} {...rest}>
+            <Container.Fluid className="pb-0">
+                <Flexbox.Row.Full.JustifyStart className="mb-0">
+                    <Heading.H6>{title}</Heading.H6>
+                    <Tabs
+                        onChange={(...args) =>
+                            console.log("On tabs active changed", ...args)
+                        }
+                        tabs={["hello", "world"]}
+                    ></Tabs>
+                </Flexbox.Row.Full.JustifyStart>
+            </Container.Fluid>
+            <Container.Fluid className="overflow-hidden p-0">
+                <Flexbox.Row.JustifyStart.AlignStart.NoWrap
+                    justify="start"
+                    className="overflow-x-auto p-8"
+                >
+                    {items.map((item, index) => (
+                        <PosterCardComponent
+                            key={index}
+                            className="mr-6"
+                            title={item.title}
+                            image={item.posterImage}
+                            releaseDate={item.releaseDate}
+                        ></PosterCardComponent>
+                    ))}
+                </Flexbox.Row.JustifyStart.AlignStart.NoWrap>
+            </Container.Fluid>
+        </Flexbox.Column.Full>
     );
 }
 
-HeroComponent.propTypes = {
+CarouselComponent.propTypes = {
+    items: PropTypes.array,
     heading: PropTypes.string,
     text: PropTypes.string,
     buttonText: PropTypes.string,

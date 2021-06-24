@@ -3,16 +3,22 @@ import Container from "@/components/atoms/container";
 import HeroComponent from "@/components/organisms/hero";
 import MovieService from "@/application/movies";
 import Movie from "@/domain/movies/movie";
-import PosterCardComponent from "@/components/molecules/cards/poster";
+import CarouselComponent from "@/components/organisms/carousel";
 
 export default function HomePage() {
     const [mostPopular, setMostPopular] = useState(Movie());
+    const [mostPopularList, setMostPopularList] = useState([]);
+    const [nowPlayingList, setNowPlayingList] = useState([]);
 
     const fetchMostPopular = async () => {
         const mostPopular = await MovieService().getMostPopular();
+        const mostPopularList = await MovieService().getPopular();
+        const nowPlayingList = await MovieService().getNowPlaying();
 
         console.log("Most Popular Movie:", mostPopular);
         setMostPopular(mostPopular);
+        setMostPopularList(mostPopularList);
+        setNowPlayingList(nowPlayingList);
     };
 
     useEffect(() => {
@@ -29,12 +35,16 @@ export default function HomePage() {
                 backdropImage={mostPopular.backdropImage}
                 buttonText={"See movie info"}
             ></HeroComponent>
-            <PosterCardComponent
-                title={mostPopular.title}
-                year={mostPopular.year}
-                image={mostPopular.posterImage}
-                releaseDate={mostPopular.releaseDate}
-            ></PosterCardComponent>
+            <CarouselComponent
+                title="Most popular"
+                items={mostPopularList}
+                className="relative z-10"
+            ></CarouselComponent>
+            <CarouselComponent
+                title="Now playing"
+                items={nowPlayingList}
+                className="relative z-10"
+            ></CarouselComponent>
             <Container></Container>
         </>
     );
