@@ -1,0 +1,36 @@
+.rating-badge {
+    --rating-font-size: 1.6rem;
+    --rating-size: 4rem;
+    --rating-value-1: 20%;
+    --rating-value-2: 40%;
+
+    padding: 0.35rem;
+    height: var(--rating-size);
+    width: var(--rating-size);
+    font-size: var(--rating-font-size);
+    font-weight: 600;
+    border-radius: 9999px;
+}
+
+.rating-badge--bad {
+    background: conic-gradient(#ff310d, #ff310d var(--rating-value-1), #96160070 var(--rating-value-2), #96160070);
+}
+
+.rating-badge--regular {
+    background: conic-gradient(#ffaa0d, #ffaa0d var(--rating-value-1), #ffaa0d33 var(--rating-value-2), #ffaa0d33);
+}
+
+.rating-badge--good {
+    background: conic-gradient(#2AC839, #2AC839 var(--rating-value-1), #2AC83933 var(--rating-value-2), #2AC83933);
+}
+
+.rating-badge__content {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    border-radius: 9999px;
+}
+
+.rating-badge__percentage {
+    font-size: calc(var(--rating-font-size) * 0.5);
+}
