@@ -16,12 +16,14 @@ export default function PosterCardComponent({
     year,
     releaseDate,
     rating,
+    className,
+    ...rest
 }) {
     return (
-        <Card maxWidth="280px">
+        <Card maxWidth="280px" minWidth="260px" className={classNames(styles["poster-card"], className)} {...rest}>
             <img className={styles["poster-card__image"]} src={image}></img>
-            <Heading.H6 className="mt-4">{title}</Heading.H6>
-            <Text.Regular.Large>{releaseDate}</Text.Regular.Large>
+            <Text.ExtraLarge.Bold maxLines={1} className="mt-4">{title}</Text.ExtraLarge.Bold>
+            <Text.Regular.Normal>{releaseDate}</Text.Regular.Normal>
             <Button className="mt-4">Movie info</Button>
         </Card>
     );
