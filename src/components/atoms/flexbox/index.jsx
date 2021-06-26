@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import classNames from "classnames";
 import styles from "./style.module.css";
 import { decorateComponentProps } from "../../../infrastructure/jsx/props";
@@ -50,39 +50,50 @@ const DefaultProps = {
 /**
  * @param {DefaultPropsType & React.HTMLAttributes} param0
  */
-export default function Flexbox({
-    justify = DefaultProps.justify,
-    align = DefaultProps.align,
-    direction = DefaultProps.direction,
-    wrap = DefaultProps.wrap,
-    basis = DefaultProps.basis,
-    wrapReverse = DefaultProps.wrapReverse,
-    directionReverse = DefaultProps.directionReverse,
-    children,
-    className,
-    ...rest
-} = DefaultProps) {
-    const directionModifier = `${direction}${
-        directionReverse ? "-reverse" : ""
-    }`;
-    const wrapModifier = `${wrap}${wrapReverse ? "-reverse" : ""}`;
+const Flexbox = forwardRef(
+    (
+        {
+            justify = DefaultProps.justify,
+            align = DefaultProps.align,
+            direction = DefaultProps.direction,
+            wrap = DefaultProps.wrap,
+            basis = DefaultProps.basis,
+            wrapReverse = DefaultProps.wrapReverse,
+            directionReverse = DefaultProps.directionReverse,
+            children,
+            className,
+            ...rest
+        } = DefaultProps,
+        elementRef
+    ) => {
+        const flexboxElementRef = useRef(null);
 
-    return (
-        <div
-            className={classNames(
-                styles.flexbox,
-                styles[`flexbox--basis-${basis}`],
-                styles[`flexbox--align-${align}`],
-                styles[`flexbox--${wrapModifier}`],
-                styles[`flexbox--${directionModifier}`],
-                styles[`flexbox--justify-${justify}`],
-                className
-            )}
-            children={children}
-            {...rest}
-        />
-    );
-}
+        const reverseModifier = directionReverse ? "-reverse" : "";
+        const directionModifier = `${direction}${reverseModifier}`;
+        const wrapModifier = `${wrap}${wrapReverse ? "-reverse" : ""}`;
+
+        useImperativeHandle(elementRef, () => {
+            return flexboxElementRef.current;
+        });
+
+        return (
+            <div
+                className={classNames(
+                    styles.flexbox,
+                    styles[`flexbox--basis-${basis}`],
+                    styles[`flexbox--align-${align}`],
+                    styles[`flexbox--${wrapModifier}`],
+                    styles[`flexbox--${directionModifier}`],
+                    styles[`flexbox--justify-${justify}`],
+                    className
+                )}
+                children={children}
+                ref={flexboxElementRef}
+                {...rest}
+            />
+        );
+    }
+);
 
 Flexbox.Full = decorateComponentProps(Flexbox, {
     basis: PossibleBasis.Full,
@@ -148,3 +159,5 @@ Flexbox.JustifySpaceEvenly = decorateComponentProps(Flexbox, {
 Flexbox.JustifySpaceAround = decorateComponentProps(Flexbox, {
     justify: PossibleJustifications.SpaceAround,
 });
+
+export default Flexbox;
