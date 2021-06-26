@@ -2,6 +2,8 @@
     --button-width: max-content;
     --button-height: 3rem;
     --button-background: var(--primary-color, #0f0f0f);
+    --button-min-width: max-content;
+    --button-max-width: none;
 
     --button-inset-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     --button-outer-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -21,7 +23,8 @@
     border: none;
     height: var(--button-height);
     width: var(--button-width);
-    min-width: max-content;
+    min-width: var(--button-min-width, max-content);
+    max-width: var(--button-max-width, none);
     background: var(--button-background);
     box-shadow: inset var(--button-inset-shadow), var(--button-outer-shadow);
 
@@ -34,6 +37,7 @@
     text-decoration: none;
 
     transition: all 150ms ease-out;
+    backdrop-filter: blur(15px);
 }
 
 .button:hover {
@@ -64,7 +68,7 @@
 }
 
 .button--cta.button--accent {
-    --button-background: linear-gradient(to right, #FD0000, #FF9900);
+    --button-background: linear-gradient(to right, #fd0000, #ff9900);
 }
 
 .button--outline {
@@ -101,4 +105,16 @@
     --button-height: 1.5rem;
     --button-padding: 0 1.25rem;
     --button-font-size: 0.875rem;
+}
+
+.button.button--icon {
+    --button-padding: 0rem;
+    --button-max-width: var(--button-height);
+    --button-width: var(--button-height);
+    --button-min-width: var(--button-height);
+    /* --button-font-size: calc(var(--button-font-size) + 1rem) */
+}
+
+.button.button--icon i {
+    font-size: 1.25em;
 }
