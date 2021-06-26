@@ -1,13 +1,43 @@
 .container {
-    @apply container;
-    
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
+    width: 100%;
+    max-width: var(--container-max-width, 100%);
+    padding: 2rem;
 }
 
+@screen sm {
+    .container {
+        --container-max-width: var(--container-sm-max-width);
+    }
+}
+
+@screen md {
+    .container {
+        --container-max-width: var(--container-md-max-width);
+    }
+}
+
+@screen lg {
+    .container {
+        --container-max-width: var(--container-lg-max-width);
+    }
+}
+
+@screen xl {
+    .container {
+        --container-max-width: var(--container-xl-max-width);
+    }
+}
+
+@screen 2xl {
+    .container {
+        --container-max-width: var(--container-xxl-max-width);
+    }
+}
+
+
 .container--fluid {
-    max-width: 100%;
-    width: 100%;
-    padding: 2rem;
+    --container-max-width: 100%;
 }
