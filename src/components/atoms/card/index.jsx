@@ -5,6 +5,7 @@ import styles from "./style.module.css";
 
 export default function Card({
     isFluid = false,
+    isHoverable = false,
     children,
     className,
     width,
@@ -30,7 +31,11 @@ export default function Card({
     return (
         <div
             style={elementStyles}
-            className={classNames(styles.card, className)}
+            className={classNames(
+                styles.card,
+                { [styles["card--hoverable"]]: isHoverable },
+                className
+            )}
             {...rest}
         >
             {children}
@@ -39,3 +44,4 @@ export default function Card({
 }
 
 Card.Fluid = decorateComponentProps(Card, { isFluid: true });
+Card.Hoverable = decorateComponentProps(Card, { isHoverable: true });

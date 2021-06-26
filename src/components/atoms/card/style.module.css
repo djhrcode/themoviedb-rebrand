@@ -26,4 +26,11 @@
     max-height: var(--card-max-height);
     min-height: var(--card-min-height);
     height: var(--card-height);
+
+    backdrop-filter: blur(15px);
+}
+
+
+.card--hoverable {
+    cursor: pointer;
 }
