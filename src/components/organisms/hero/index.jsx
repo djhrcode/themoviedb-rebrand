@@ -10,8 +10,8 @@ import Text from "@/components/atoms/text";
 import Container from "@/components/atoms/container";
 import Icon from "@/components/atoms/icon";
 
-const ButtonComponent = ({ children }) =>
-    children ? (
+function ButtonComponent({ children, infoRouteTo }) {
+    return children ? (
         <Flexbox.Row>
             <Button.Accent.ExtraLarge
                 className={classNames(styles["hero__button"], "mb-6 mr-6")}
@@ -19,58 +19,63 @@ const ButtonComponent = ({ children }) =>
                 <Icon name="mdi-motion-play-outline" right />
                 Watch trailer
             </Button.Accent.ExtraLarge>
-            <Button.Primary.ExtraLarge
+            <Button.Ghost.ExtraLarge
+                to={infoRouteTo}
                 className={classNames(styles["hero__button"], "mb-6")}
             >
                 <Icon name="mdi-information-outline" right />
                 See info
-            </Button.Primary.ExtraLarge>
+            </Button.Ghost.ExtraLarge>
         </Flexbox.Row>
     ) : null;
+}
 
-const TextComponent = ({ children }) =>
-    children ? (
+function TextComponent({ children }) {
+    return children ? (
         <Text.ExtraLarge
             maxLines={2}
             className={classNames(styles["hero__text"], "mb-10")}
             children={children}
         />
     ) : null;
+}
 
-const HeadingComponent = ({ children }) =>
-    children ? (
+function HeadingComponent({ children }) {
+    return children ? (
         <Flexbox.Row.AlignCenter className="mb-4">
             <Heading.H1.ExtraLarge
                 className={classNames(styles["hero__heading"])}
                 children={children}
-            >
-            </Heading.H1.ExtraLarge>
+            ></Heading.H1.ExtraLarge>
         </Flexbox.Row.AlignCenter>
     ) : null;
+}
 
-const HeroStructure = ({
+function HeroStructure({
     heading,
     text,
     button,
     backdrop,
     className,
     ...rest
-}) => (
-    <Flexbox.Column.Full className={styles.hero} {...rest}>
-        <Container.Fluid>
-            <Grid cols={1} md={2} className={styles["hero__grid"]}>
-                <Flexbox.Column.AlignStart
-                    className={classNames(styles["hero__content"])}
-                >
-                    {heading}
-                    {text}
-                    {button}
-                </Flexbox.Column.AlignStart>
-            </Grid>
-        </Container.Fluid>
-        {backdrop}
-    </Flexbox.Column.Full>
-);
+}) {
+    return (
+        <Flexbox.Column.Full className={styles.hero} {...rest}>
+            <Container.Fluid>
+                <Grid cols={1} md={2} className={styles["hero__grid"]}>
+                    <Flexbox.Column.AlignStart
+                        className={classNames(styles["hero__content"])}
+                    >
+                        {heading}
+                        {text}
+                        {button}
+                    </Flexbox.Column.AlignStart>
+                </Grid>
+            </Container.Fluid>
+            {backdrop}
+        </Flexbox.Column.Full>
+    );
+}
 
 export default function HeroComponent({
     headingText,
@@ -80,6 +85,7 @@ export default function HeroComponent({
     headingComponent,
     textComponent,
     buttonComponent,
+    infoRouteTo,
 }) {
     const heroStyles = {
         "--hero-bg-image": `url(${backdropImage})`,
@@ -91,12 +97,17 @@ export default function HeroComponent({
     const TextArea = () =>
         textComponent ?? <TextComponent>{descriptionText}</TextComponent>;
 
-    const ButtonArea = () =>
-        buttonComponent ?? <ButtonComponent>{buttonText}</ButtonComponent>;
+    const ButtonArea = (props) =>
+        buttonComponent ?? (
+            <ButtonComponent {...props}>{buttonText}</ButtonComponent>
+        );
 
     const BackdropArea = () =>
         backdropImage ? (
             <>
+                <Flexbox.AlignStretch
+                    className={styles["hero__right-gradient"]}
+                ></Flexbox.AlignStretch>
                 <Flexbox.AlignStretch
                     className={styles["hero__gradient"]}
                 ></Flexbox.AlignStretch>
@@ -111,7 +122,7 @@ export default function HeroComponent({
             style={heroStyles}
             heading={<HeadingArea />}
             text={<TextArea />}
-            button={<ButtonArea />}
+            button={<ButtonArea infoRouteTo={infoRouteTo} />}
             backdrop={<BackdropArea />}
         ></HeroStructure>
     );

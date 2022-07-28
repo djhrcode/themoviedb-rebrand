@@ -23,7 +23,6 @@ import { useTemplate } from "./template.jsx";
  * @type {Array<AppRoute>}
  */
 export const routes = [
-
     {
         path: "",
         template: MainTemplate,
@@ -40,7 +39,6 @@ export const routes = [
                         path: "/",
                         exact: true,
                         component: TvShowsPage,
-                        
                     },
                     {
                         path: "/:resource",
@@ -51,8 +49,18 @@ export const routes = [
             },
             {
                 path: "movies",
-                exact: true,
-                component: MoviesPage,
+                routes: [
+                    {
+                        path: "/",
+                        exact: true,
+                        component: MoviesPage,
+                    },
+                    {
+                        path: "/:resource",
+                        exact: true,
+                        component: MoviesPage,
+                    },
+                ],
             },
             // {
             //     path: "/:tv-show",

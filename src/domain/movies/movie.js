@@ -46,7 +46,7 @@ function Movie({
             return popularity;
         },
         get voteAverage() {
-            return voteAverage;
+            return voteCount > 0 ? voteAverage : null;
         },
         get voteCount() {
             return voteCount;

@@ -60,3 +60,50 @@
     margin-top: 5rem;
     max-width: 34rem;
 }
+
+.carousel__button-container {
+    --carousel__button-container-direction: right;
+    --carousel__button-padding: none;
+    --carousel__button-right: auto;
+    --carousel__button-left: auto;
+    --carousel__button-opacity: 1;
+
+    transition: all 600ms ease-out;
+    position: absolute;
+    height: 100%;
+    opacity: var(--carousel__button-opacity);
+    right: var(--carousel__button-right);
+    left: var(--carousel__button-left);
+    padding: var(--carousel__button-padding);
+    background: linear-gradient(
+        to var(--carousel__button-container-direction),
+        transparent,
+        var(--background-color)
+    );
+}
+
+.carousel__button-container--right {
+    --carousel__button-right: 0px;
+    --carousel__button-left: auto;
+    --carousel__button-container-direction: right;
+    --carousel__button-padding: 0 2rem;
+}
+
+.carousel__button-container--left {
+    --carousel__button-right: auto;
+    --carousel__button-left: 0px;
+    --carousel__button-container-direction: left;
+    --carousel__button-padding: 0 2rem;
+}
+
+.carousel__button-container--hidden {
+    --carousel__button-opacity: 0;
+}
+
+.carousel__button-container--hidden.carousel__button-container--right {
+    --carousel__button-right: -300px;
+}
+
+.carousel__button-container--hidden.carousel__button-container--left {
+    --carousel__button-left: -300px;
+}

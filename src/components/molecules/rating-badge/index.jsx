@@ -13,6 +13,8 @@ const ValuesGradient = {
 const GradientKeyPoints = Object.keys(ValuesGradient);
 
 export default function RatingBadge({ value = 0, className, ...rest }) {
+    const isEmptyRating = () => value === null;
+
     const integerRating = value * 10;
 
     const keyPoint = GradientKeyPoints.reduce((carry, keyPoint) => {
@@ -21,9 +23,7 @@ export default function RatingBadge({ value = 0, className, ...rest }) {
         return parseInt(carry);
     }, 0);
 
-    const gradient = ValuesGradient[keyPoint];
-
-    console.log("Gradient", gradient)
+    const gradient = isEmptyRating() ? "empty" : ValuesGradient[keyPoint];
 
     return (
         <Flexbox.Column
@@ -32,24 +32,31 @@ export default function RatingBadge({ value = 0, className, ...rest }) {
                 styles[`rating-badge--${gradient}`],
                 className
             )}
-
-            style={{ 
+            style={{
                 "--rating-value-1": `${integerRating}%`,
-                "--rating-value-2": `${integerRating > 80 ? 100 : integerRating + 20}%`,
+                "--rating-value-2": `${
+                    integerRating > 80 ? 100 : integerRating + 20
+                }%`,
             }}
         >
             <Flexbox.Column.Full
                 className={classNames(styles["rating-badge__content"])}
             >
                 <span>
-                    {integerRating}
-                    <span
-                        className={classNames(
-                            styles["rating-badge__percentage"]
-                        )}
-                    >
-                        %
-                    </span>
+                    {isEmptyRating() ? (
+                        "-"
+                    ) : (
+                        <>
+                            {integerRating}
+                            <span
+                                className={classNames(
+                                    styles["rating-badge__percentage"]
+                                )}
+                            >
+                                %
+                            </span>
+                        </>
+                    )}
                 </span>
             </Flexbox.Column.Full>
         </Flexbox.Column>

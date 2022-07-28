@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
+import {
+    Redirect,
+    Route,
+    Switch,
+    useLocation,
+    useRouteMatch,
+} from "react-router-dom";
 import { registerTemplate, useTemplate } from "./template";
 
 /**
@@ -79,6 +85,10 @@ RouteComposer.propTypes = {
  * @type {import("react").FunctionComponent<RoutesTreeProps>}
  */
 export const RoutesTree = ({ routes, nested = false }) => {
+    const location = useLocation();
+    const dialogRouteBackground =
+        location.state && location.state.dialogRouteBackground;
+
     const composedRoutes = routes.map((route, index) =>
         composeRoute(route, index, nested)
     );
@@ -87,5 +97,9 @@ export const RoutesTree = ({ routes, nested = false }) => {
         return <>{composedRoutes}</>;
     }
 
-    return <Switch>{composedRoutes}</Switch>;
+    return (
+        <Switch location={dialogRouteBackground || location}>
+            {composedRoutes}
+        </Switch>
+    );
 };

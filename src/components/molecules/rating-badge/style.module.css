@@ -1,15 +1,20 @@
 .rating-badge {
-    --rating-font-size: 1.6rem;
-    --rating-size: 4rem;
+    --rating-font-size: 1rem;
+    --rating-size: 2.5rem;
     --rating-value-1: 20%;
     --rating-value-2: 40%;
 
-    padding: 0.35rem;
+    padding: 0.25rem;
     height: var(--rating-size);
     width: var(--rating-size);
     font-size: var(--rating-font-size);
-    font-weight: 600;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
     border-radius: 9999px;
+}
+
+.rating-badge--empty {
+    background: conic-gradient(#858585, #858585 var(--rating-value-1), #85858570 var(--rating-value-2), #85858570);
 }
 
 .rating-badge--bad {
@@ -32,5 +37,5 @@
 }
 
 .rating-badge__percentage {
-    font-size: calc(var(--rating-font-size) * 0.5);
+    font-size: calc(var(--rating-font-size) * 0.6);
 }

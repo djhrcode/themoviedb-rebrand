@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -30,6 +31,13 @@
     --warning-color: #ff9900;
     --success-color: #2ac839;
 
+    --container-base-max-width: 100%;
+    --container-sm-max-width: 640px; /* */
+    --container-md-max-width: 768px; /* */
+    --container-lg-max-width: 1024px; /* */
+    --container-xl-max-width: 1280px; /* */
+    --container-xxl-max-width: 1536px; /* */
+
     --primary-gradient: linear-gradient(
         to right,
         var(--primary-color),
@@ -48,6 +56,7 @@
 
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *,
@@ -65,16 +74,16 @@ button:focus {
     width: 0.5em;
     height: 0.5em;
 }
- 
+
 *::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #fff1;
     border-radius: 1rem;
 }
- 
+
 *::-webkit-scrollbar-thumb {
-  background-color: #fff1;
-  border-radius: 1rem;
+    background-color: #fff1;
+    border-radius: 1rem;
 }
 body {
     margin: 0;

@@ -11,12 +11,12 @@ const MovieResource = createResource((data, serializer) =>
         title: serializer.string(data.title),
         description: serializer.string(data.overview),
         popularity: serializer.int(data.popularity),
-        voteAverage: serializer.int(data.vote_average),
+        voteAverage: serializer.float(data.vote_average),
         voteCount: serializer.int(data.vote_count),
         releaseDate: formatDate(serializer.string(data.release_date)),
         year: resolveDateYear(serializer.string(data.release_date)),
         posterImage: PosterImageResource(serializer.string(data.poster_path))
-            .xlarge,
+            .medium,
         backdropImage: BackdropImageResource(
             serializer.string(data.backdrop_path)
         ).xlarge,
